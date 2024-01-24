@@ -1,5 +1,6 @@
 import { Student } from "./Student";
 import { Internship } from "./Internship";
+//const path = require('path');
 
 export class CustomizedMap {
   private map: google.maps.Map;
@@ -14,11 +15,12 @@ export class CustomizedMap {
       },
     });
   }
-  private addMarker(position: google.maps.LatLng, title: string): void {
+  private addMarker(position: google.maps.LatLng, title: string, image?: string): void {
     const marker = new google.maps.Marker({
       position: position,
       map: this.map,
       title: title,
+      icon : image,
     });
 
     const infoWindow = new google.maps.InfoWindow({
@@ -32,7 +34,12 @@ export class CustomizedMap {
     this.markers.push(marker);
   }
   addStudentMarker(student: Student): void {
-    this.addMarker(new google.maps.LatLng(student.location.lat, student.location.lon), `student : ${student.fullName}`);
+    //E:\workspace\COMP2523\mapprac\mapprac\src\icon
+    //src\CustomizedMap.ts
+    const image =
+    "https://blogfiles.pstatic.net/20140911_29/hyl0011_1410408338229eKeBf_GIF/mini_157.gif";
+    console.log(image);
+    this.addMarker(new google.maps.LatLng(student.location.lat, student.location.lon), `student : ${student.fullName}`, image);
   }
 
   addInternshipMarker(internship: Internship): void {
