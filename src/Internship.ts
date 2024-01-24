@@ -11,8 +11,8 @@ export class Internship {
 
     makeNewInternship(): Internship {
         const businessName = faker.company.name();
-        const lat = faker.location.latitude();
-        const lon = faker.location.longitude();
+        const lat = faker.location.latitude({ max: 49, min: 24 });
+        const lon = faker.location.longitude({ max: -66, min: -125});
 
         return new Internship(businessName, {lat, lon});
     }
